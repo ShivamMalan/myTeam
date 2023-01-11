@@ -1,0 +1,75 @@
+<div class="team">
+    <div class="team-header">
+        <span class="header-text">My Teams</span> <tm-btn name="Import Team" type="submit right" (click)="openModal()" type="button"></tm-btn>
+    </div>
+    <div class="">
+        <div class="table-list">
+            <div class="wrapper text-4 list-view list-head" *ngIf="players.length > 0">
+                <div class="wrapper text-2">
+                    <div class="wrapper text">{{players[0].playerName}}</div>
+                    <div class="wrapper text">{{players[0].jerseyNumber}}</div>
+                    <div class="wrapper text">{{players[0].position}}</div>
+                    <div class="wrapper text">{{players[0].nationality}}</div>
+                    <div class="wrapper text">{{players[0].height}}</div>
+                    <div class="wrapper text">{{players[0].weight}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="table-list" *ngFor="let player of team.team | slice:1;let i = index;">
+            <div class="wrapper text-4 list-view" [ngClass]="{'highlight' : team.favPlayer==player, 'non-highlight': team.favPlayer!=player}">
+                <div class="wrapper text-2">
+                    <div class="wrapper text">
+                        <span class="text" [ngClass]="{'expanded' : expanded==player, 'un-expanded': expanded!=player}" (click)="expand(player,toggle)">{{player.playerName}}</span>
+                    </div>
+                    <div class="wrapper text">
+                        <span class="text" [ngClass]="{'expanded' : expanded==player, 'un-expanded': expanded!=player}" (click)="expand(player,toggle)">{{player.jerseyNumber}}</span>
+                    </div>
+                    <div class="wrapper text">
+                        <span class="text" [ngClass]="{'expanded' : expanded==player, 'un-expanded': expanded!=player}" (click)="expand(player,toggle)">{{player.position}}</span>
+                    </div>
+                    <div class="wrapper text">
+                        <span class="text" [ngClass]="{'expanded' : expanded==player, 'un-expanded': expanded!=player}" (click)="expand(player,toggle)">{{player.nationality}}</span>
+                    </div>
+                    <div class="wrapper text">
+                        <span class="text" [ngClass]="{'expanded' : expanded==player, 'un-expanded': expanded!=player}" (click)="expand(player,toggle)">{{player.height}}</span>
+                    </div>
+                    <div class="wrapper text">
+                        <span class="text" [ngClass]="{'expanded' : expanded==player, 'un-expanded': expanded!=player}" (click)="expand(player,toggle)">{{player.weight}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <tm-modal [(tmModalOpen)]="modalOpened" [title]="'Importer'">
+        <div class="header">
+            <div [ngClass]="{'stepper-1-start':true, 'active': step>=1, 'error':error!=''}"><div class="arrow"></div>
+              <i class="fa fa-upload" style="margin-left: 20px;"></i> <span style="font-weight: 400; font-size: 14px; margin-left:5px ;">Player Data</span>
+            </div>
+            <div [ngClass]="{'stepper-2-start-end':true, 'active': step>=2}"><div class="arrow-2-start"></div>
+              <i class="fa fa-star" style="margin-left: 20px;"></i> <span style="font-weight: 400; font-size: 14px; margin-left:5px ;">Favorite</span>
+            <div class="arrow-2"></div></div>
+            <div [ngClass]="{'stepper-3-end':true, 'active': step>=3}"><div class="arrow-3-start"></div>
+              <i class="fa fa-list" style="margin-left: 20px;"></i> <span style="font-weight: 400; font-size: 14px; margin-left:5px ;">Summary</span>
+            </div>
+        </div>
+        <div class="body">
+            <tm-data #data [step]="step" (playerDataChanged)="playerDataCall($event)" (errorPass)="errorText($event)" (formChanged)="teamForm($event)"></tm-data>
+            <tm-favorite #fav [step]="step" [playerData]="playerData" [form]="form" (favFormChanged)="teamForm($event)"></tm-favorite>
+            <tm-summary #sum [step]="step" [playerData]="playerData" [form]="form" (teamChanged)="teamData($event)"></tm-summary>
+        </div>
+        <div class="footer">
+            <tm-btn class="resubmit left bottom" type="button" name="Return" (click)="return()" *ngIf="step>1"></tm-btn>
+            <tm-btn class="submit left bottom" type="button" name="Continue" (click)="continue()" *ngIf="error=='' && form.valid"></tm-btn>
+            <tm-tooltip message="Please add a Title and the Team File before continuing" *ngIf="step==1">
+                <tm-btn class="submit left bottom" type="button" name="Continue" *ngIf="error=='' && !form.valid" style="opacity: 0.3;"></tm-btn>
+            </tm-tooltip>
+            <tm-tooltip message="Please select a Favorite Player before continuing" *ngIf="step==2">
+                <tm-btn class="submit left bottom" type="button" name="Continue" *ngIf="error=='' && !form.valid" style="opacity: 0.3;"></tm-btn>
+            </tm-tooltip>
+        </div>
+    </tm-modal>
+</div>
+

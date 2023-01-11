@@ -1,0 +1,33 @@
+<div class="mw-base" *ngIf="step==3">
+    <div class="mh-base">Your're adding</div>
+    <div class="table-list pt-base">
+        <div class="wrapper text-4 justify pt-base">
+            <div class="wrapper text list-head-text ">Team Name</div>
+            <div class="wrapper text list-head-text ">Player Data</div>
+            <div class="wrapper text list-head-text ">Favorite Player</div>
+        </div>
+    </div>
+    <div class="table-list">
+        <div class="wrapper text-4 justify">
+            <div class="wrapper text">{{this.form.get('teamName').value}}</div>
+            <div class="wrapper text">{{this.form.get('teamFile').value.name}}</div>
+            <div class="wrapper text">{{this.form.get('favPlayer').value.playerName}}</div>
+        </div>
+    </div>
+    <div class="table-list pt-base">
+        <div class="wrapper text-4 justify pt-base">
+            <div class="wrapper text list-head-text ">Goalkeepers</div>
+            <div class="wrapper text list-head-text ">Defenders</div>
+            <div class="wrapper text list-head-text ">Midfielders</div>
+            <div class="wrapper text list-head-text ">Forwards</div>
+        </div>
+    </div>
+    <div class="table-list">
+        <div class="wrapper text-4 justify">
+            <div class="wrapper text">{{Goalkeepers}}</div>
+            <div class="wrapper text">{{Defenders}}</div>
+            <div class="wrapper text">{{Midfielders}}</div>
+            <div class="wrapper text">{{Forwards}}</div>
+        </div>
+    </div>
+</div>

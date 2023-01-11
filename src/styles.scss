@@ -1,1 +1,112 @@
 /* You can add global styles to this file, and also import other style files */
+$base-theme:Default;
+$skin-name:Teams default blue;
+$primary:#1371FE;
+$primary-hover:#0C51BA;
+$text-heading:#202020;
+$text-disabled: #B2B9D3;
+$text-normal:#3E3E3E;
+$text-muted:#999999;
+$text-default:#1A1B1C;
+$background:#E5E5E5;
+$background-1:#F5F7FB;
+$border:#D8DAE5;
+$white:#fff;
+$default-font: 'Poppins';
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+@import "https://fonts.googleapis.com/css?family=Poppins";
+
+body{
+    font-family: $default-font;
+    font-style: normal;
+    color: $text-default;
+}
+.headings{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+}
+.header{
+    position: relative;
+    background-color: #fff;
+    height: 40px;
+    overflow: hidden;
+}
+.footer{
+    display:flex;
+    padding: 15px;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+.mw-base{
+    margin-left:32px;
+    margin-right:32px;
+}
+.mh-base{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.buttons{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.table-list{
+    display: flex;          display: -webkit-flex;
+    flex-direction: row;    -webkit-flex-direction: row;
+    flex-wrap: wrap;     -webkit-flex-wrap: wrap;
+    width: 100%;
+}
+.list-view{
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+    padding: 9px 16px;
+    margin:5px 2px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #1A1B1C;
+}
+.list-head-text{
+    color: #758CA3;
+}
+.list-head{
+    @extend .list-head-text;
+    font-weight: 500;
+    background: #F6F8FF;
+}
+.text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
+    width: 21px;
+  }
+.wrapper{
+    display: flex;           display: -webkit-flex;
+    flex-direction: row;     -webkit-flex-direction: row;
+    flex-grow: 0;            -webkit-flex-grow: 0;
+    flex-wrap: wrap;
+}
+.text-4, .text-2, .text {
+    flex: 1;           -webkit-flex: 1;
+  }
+.highlight{
+    background: #FAFBFD;
+    border: 1px solid #DFAE00;
+    border-radius: 8px;
+}
+.non-highlight{
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+    background: #fff;
+}
+.expanded{
+    white-space: normal;
+}
+.un-expanded{
+    white-space: nowrap;
+}

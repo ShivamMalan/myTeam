@@ -1,0 +1,36 @@
+<form [formGroup]="teamForm" *ngIf="step==1">
+    <div class="data">
+    <div class="data-head">
+        <div class="data-label">Team Name</div>
+        <div class="team-input">
+            <input type="text" (change)="textListener()" title="LA Galaxy" width="264" placeholder="LA Galaxy" formControlName="teamName" [class.is-invalid]="teamForm.get('teamName')?.hasError('required')">
+            <i class="fa fa-check float-icon" style="color: #1371FE;" *ngIf="!teamForm.get('teamName')?.hasError('required')"></i>
+        </div>
+    </div>
+    <div class="data-head">
+        <div class="data-label">
+            File
+        </div>
+        <div class="file-btn upload-btn-wrapper">
+            <tm-btn class="resubmit left" type="button" name="Select File" *ngIf="fileName==''"></tm-btn>
+            <tm-btn class="resubmit left a-left" type="button" [name]="fileName" width="264" *ngIf="fileName!=''"></tm-btn>
+            <input #csvReader type="file" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv">
+            <i class="fa fa-check float-icon" style="color: #1371FE;" *ngIf="fileName!='' && alertText==''"></i>
+            <i class="fa fa-times float-icon" style="color: #1A1B1C;" *ngIf="alertText!=''"></i>
+        </div>
+        <div class="alert-text" *ngIf="fileName==''">File must be in .csv format</div>
+        <div class="alert" *ngIf="alertText!=''">
+            <div class="alert-head">
+                <i class="fa fa-times-circle " style="color: #EA1212;"></i> Missing Value
+            </div>
+            <span class="alert-text">{{alertText}}</span>
+        </div>
+    </div>
+    </div>
+    <div class="footer">
+        <div class="upload-btn-wrapper">
+            <tm-btn class="resubmit left bottom" type="button" name="Re-upload File" *ngIf="step==1 && alertText!=''"></tm-btn>
+            <input #csvReader type="file" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv">
+        </div>
+    </div>
+</form>

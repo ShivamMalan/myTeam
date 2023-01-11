@@ -1,0 +1,68 @@
+.btn-label{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+button{
+    cursor: pointer;
+}
+.btn {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px 7px;
+    gap: 10px;
+}
+.submit{
+    @extend .btn;
+    background: #1371FE;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    color:#FFFFFF
+}
+.cancel{
+    @extend .btn;
+
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+
+    color:black
+}
+.resubmit{
+    @extend .btn;
+
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+
+    color:#1371FE
+}
+.left{
+    margin-right: auto;
+    margin-left: 32;
+}
+.right{
+    margin-left: auto;
+    margin-right: 32;
+}
+.top{
+    margin-top:32;
+    margin-bottom: auto;
+}
+.bottom{
+    margin-bottom: 32;
+    margin-top: auto;
+}
+.a-left{
+    text-align: left;
+    justify-content:start;
+}

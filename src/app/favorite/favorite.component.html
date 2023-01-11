@@ -1,0 +1,31 @@
+<div class="mw-base" *ngIf="step==2">
+    <div class="mh-base">Select a Favorite</div>
+    <div class="favorite">
+      <div class="table-list">
+          <div class="wrapper text-4 list-view list-head" *ngIf="playerData.length > 0">
+              <div class="wrapper text-2">
+              <div class="wrapper text">{{playerData[0].playerName}}</div>
+              <div class="wrapper text">{{playerData[0].jerseyNumber}}</div>
+              <div class="wrapper text">{{playerData[0].playerImage}}</div>
+              <div class="wrapper text">{{playerData[0].position}}</div>
+              <div class="wrapper text">Status</div>
+            </div>
+          </div>
+      </div>
+      <form [formGroup]="favForm">
+        <div class="table-list" *ngFor="let record of playerData | slice:1;let i = index">
+          <div class="wrapper text-4 list-view" [ngClass]="{'highlight' : form.controls['favPlayer'].value==record, 'non-highlight': form.controls['favPlayer'].value!=record}">
+              <div class="wrapper text-2">
+                <div class="wrapper text">
+                    <input type="radio" id="favPlayer" name="favPlayer" formControlName="favPlayer" [value]="record" (change)="favorite(record)" [class.is-invalid]="favForm.get('favPlayer')?.hasError('required')">
+                  <span class="text" [ngClass]="{'expanded' : expanded==record, 'un-expanded': expanded!=record}" (click)="expand(record,toggle)">{{record.playerName}}</span> 
+                </div>
+                <div class="wrapper text"> <span class="text" [ngClass]="{'expanded' : expanded==record, 'un-expanded': expanded!=record}" (click)="expand(record,toggle)">{{record.jerseyNumber}}</span> </div>
+                <div class="wrapper text"> <span class="text" [ngClass]="{'expanded' : expanded==record, 'un-expanded': expanded!=record}" (click)="expand(record,toggle)">{{record.position}}</span> </div>
+                <div class="wrapper text"> <span class="text" [ngClass]="{'expanded' : expanded==record, 'un-expanded': expanded!=record}" (click)="expand(record,toggle)">Active</span> </div>
+              </div>
+            </div>
+        </div>
+      </form>
+      </div>
+</div>
