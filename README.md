@@ -1,6 +1,10 @@
 # MyTeam
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+So, make sure you have node version atleast 14.20.0 to run the following commands.
+
+## Package Installation
+Run `npm i` for installing all the required libraries to run the project. make sure you are using node version 14.20.0 or above to run and install the correct compatible libraries.
 
 ## Development server
 
